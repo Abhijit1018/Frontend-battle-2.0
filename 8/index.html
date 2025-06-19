@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Replica</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <span>4.8 rating on Capterra</span>
+                <img src="path/to/capterra-logo.png" alt="Capterra logo" class="company-logo">
+            </div>
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <span>4.8 rating on G2</span>
+                <img src="path/to/g2-logo.png" alt="G2 logo" class="company-logo">
+            </div>
+            <div class="review">
+                <span>350+ reviews on Xero</span>
+                <img src="path/to/xero-logo.png" alt="Xero logo" class="company-logo">
+            </div>
+            <div class="review">
+                <span>550+ reviews on Intuit QuickBooks</span>
+                <img src="path/to/quickbooks-logo.png" alt="QuickBooks logo" class="company-logo">
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="headline">
+                Create <span class="headline-word-container" id="reports-word-container"><span class="highlight-text" id="reports-text">reports</span></span>, forecasts, <span class="headline-word-container" id="dashboards-word-container"><span class="highlight-text" id="dashboards-text">dashboards</span></span> & consolidations
+            </h1>
+            <div class="ai-insights">
+                <i class="fas fa-star-of-life sparkle"></i>
+                <span>Now with AI-insights</span>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn primary-btn">Start 14-day free trial ></a>
+                <a href="#" class="btn secondary-btn">
+                    <i class="fas fa-eye"></i> See what we do
+                </a>
+            </div>
+
+            <div class="dynamic-content-area">
+                <div class="content-card expenses-card" id="expenses-card">
+                    <h3>Expenses</h3>
+                    <p>$56.2K</p>
+                    <canvas id="expensesChart"></canvas>
+                    <ul>
+                        <li><span class="color-box insurance"></span>Insurance</li>
+                        <li><span class="color-box wages"></span>Wages</li>
+                        <li><span class="color-box rent"></span>Rent</li>
+                        <li><span class="color-box legal"></span>Legal Expenses</li>
+                        <li><span class="color-box other"></span>Other</li>
+                    </ul>
+                </div>
+                <div class="content-card total-income-card" id="total-income-card">
+                    <h3>Total Income</h3>
+                    <p class="growth">^ 36.5%</p>
+                    <p>$426.8K total last year</p>
+                    <canvas id="incomeChart"></canvas>
+                </div>
+                <div class="content-card cash-card" id="cash-card">
+                    <h3>Cash</h3>
+                    <p class="growth">^ 202.9%</p>
+                    <p>$288,721</p>
+                    <p class="small-text">$95,319</p>
+                    <canvas id="cashChart"></canvas>
+                </div>
+                <div class="content-card finance-score-card" id="finance-score-card">
+                    <p>90% Financial Health Score</p>
+                </div>
+                <div class="content-card report-preview-card" id="report-preview-card">
+                    <h4>Edge Design Studio</h4>
+                    <p>Business overview report</p>
+                    <p>August 2024</p>
+                    <div class="logos-row">
+                        <img src="path/to/org-logo.png" alt="Org Logo">
+                        <img src="path/to/entity-logo.png" alt="Entity Logo">
+                    </div>
+                </div>
+                <div class="content-card comment-card" id="comment-card">
+                    <div class="avatar">M</div>
+                    <div class="comment-details">
+                        <p>Mark Bosman</p>
+                        <p>@Megan let's talk about a strategy to improve these metrics.</p>
+                        <button>Reply</button>
+                    </div>
+                </div>
+                <div class="content-card send-to-card" id="send-to-card">
+                    <h3>Send to</h3>
+                    <ul>
+                        <li><i class="fas fa-file-pdf"></i> PDF</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp</li>
+                        <li><i class="fas fa-file-word"></i> Word</li>
+                        <li><i class="fab fa-slack"></i> Slack</li>
+                        <li><i class="fas fa-file-excel"></i> Excel</li>
+                        <li><i class="fas fa-users"></i> Teams</li>
+                        <li><i class="fas fa-envelope"></i> Email</li>
+                        <li><i class="fas fa-share-alt"></i> Shared URL</li>
+                    </ul>
+                </div>
+                <div class="content-card today-card" id="today-card">
+                    <h3>Today</h3>
+                    <p>$3,296</p>
+                    <h3>Next 8-30 days</h3>
+                    <p>$100,548</p>
+                 </div>
+                <div class="content-card invoices-card" id="invoices-card">
+                    <h3>Invoices</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Due</th>
+                                <th>Amount</th>
+                                <th>Reference</th>
+                                <th>Expected Date</th>
+                                <th>Include</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cinderella</td>
+                                <td>2M Ago</td>
+                                <td>$3,296</td>
+                                <td>INV-873642</td>
+                                <td>24 Aug 2023</td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                             <tr>
+                                <td>Judy Hopps</td>
+                                <td>4M Ago</td>
+                                <td>$1,000</td>
+                                <td>INV-873642</td>
+                                <td>29 Sep 2023</td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+                <div class="content-card cash-runway-card" id="cash-runway-card">
+                    <h3>Cash runway</h3>
+                    <p>6 months</p>
+                 </div>
+                <div class="content-card overdue-card" id="overdue-card">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Overdue</p>
+                    <p>$1,498</p>
+                    <p>1 invoice</p>
+                 </div>
+                <div class="content-card integrations-card" id="integrations-card">
+                    <h3>Integrations</h3>
+                    <div class="integration-logos">
+                        <img src="path/to/quickbooks-integration-logo.png" alt="QuickBooks Integration Logo">
+                        <span>+</span>
+                        <img src="path/to/xero-integration-logo.png" alt="Xero Integration Logo">
+                        <span>+</span>
+                        <img src="path/to/sage-integration-logo.png" alt="Sage Integration Logo">
+                    </div>
+                 </div>
+                <div class="content-card branch-card" id="branch-card">
+                    <h3>CU</h3>
+                    <p>Global Finance</p>
+                    <div class="branch-options">
+                        <button>US Branch</button>
+                        <button>AU Branch</button>
+                    </div>
+                 </div>
+                <div class="content-card us-states-card" id="us-states-card">
+                    <button>US</button>
+                    <button>Texas</button>
+                    <button>California</button>
+                 </div>
+            </div>
+        </div>
+
+        <div class="headline-hover-overlay" id="headline-hover-overlay"></div>
+        <div class="hover-popout-element" id="hover-popout-element">
+            <h3 id="popout-title"></h3>
+            <p id="popout-description"></p>
+        </div>
+
+        <div class="background-shape shape-1"></div>
+        <div class="background-shape shape-2"></div>
+        <div class="background-shape shape-3"></div>
+        <div class="red-circle"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scrip.js"></script>
+</body>
+</html>
