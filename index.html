@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environmental Dashboard</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fdf8f6;
+      color: #3c1f23;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1400px;
+      width: 100%;
+      margin: auto;
+    }
+    .card {
+      flex: 1 1 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 30px;
+      background: #fff8f6;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    @media (min-width: 768px) {
+      .card {
+        flex: 1 1 calc(50% - 40px);
+      }
+    }
+    @media (min-width: 1024px) {
+      .card {
+        flex: 1 1 calc(33.33% - 40px);
+      }
+    }
+    .card h3 {
+      font-weight: normal;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .value {
+      font-size: 44px;
+      margin: 15px 0;
+    }
+    .unit {
+      font-size: 18px;
+      color: #7d5a5e;
+    }
+    .change {
+      color: #7d5a5e;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    .bar-container {
+      margin-top: 30px;
+    }
+    .bar-year {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .bar {
+      height: 10px;
+      background-color: #d6cfcf;
+      position: relative;
+      margin-top: 8px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background-color: #7d4b50;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #7d5a5e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #3c1f23;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Carbon Footprint Card -->
+    <div class="card">
+      <h3>Managed portfolio carbon footprint</h3>
+      <div class="value">45,048</div>
+      <div class="unit">tCO<sub>2</sub>e</div>
+      <div class="change">↑ 16% from 2019</div>
+      <div class="bar-container">
+        <div class="bar-year">2022<div class="bar"><div class="bar-fill" style="width:100%"></div></div></div>
+        <div class="bar-year">2021<div class="bar"><div class="bar-fill" style="width:31.3%"></div></div></div>
+        <div class="bar-year">2020<div class="bar"><div class="bar-fill" style="width:72.9%"></div></div></div>
+        <div class="bar-year">2019<div class="bar"><div class="bar-fill" style="width:85.9%"></div></div></div>
+      </div>
+      <div class="footer">See full breakdown of carbon footprint <span class="icon">→</span></div>
+    </div>
+
+    <!-- Energy Intensity Card -->
+    <div class="card">
+      <h3>Managed portfolio energy intensity</h3>
+      <div class="value">123</div>
+      <div class="unit">kWh/m<sup>2</sup></div>
+      <div class="change">↓ 22% from 2019</div>
+      <div class="bar-container">
+        <div class="bar-year">2022<div class="bar"><div class="bar-fill" style="width:78.3%"></div></div></div>
+        <div class="bar-year">2021<div class="bar"><div class="bar-fill" style="width:81.5%"></div></div></div>
+        <div class="bar-year">2020<div class="bar"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="bar-year">2019<div class="bar"><div class="bar-fill" style="width:100%"></div></div></div>
+      </div>
+      <div class="footer">Download the data <span class="icon">⇓</span></div>
+    </div>
+
+    <!-- Energy Consumption Card -->
+    <div class="card">
+      <h3>Managed portfolio energy consumption</h3>
+      <div class="value">47,790,662</div>
+      <div class="unit">kWh</div>
+      <div class="change">↓ 27% from 2019</div>
+      <div class="bar-container">
+        <div class="bar-year">2022<div class="bar"><div class="bar-fill" style="width:73.3%"></div></div></div>
+        <div class="bar-year">2021<div class="bar"><div class="bar-fill" style="width:75.6%"></div></div></div>
+        <div class="bar-year">2020<div class="bar"><div class="bar-fill" style="width:74.8%"></div></div></div>
+        <div class="bar-year">2019<div class="bar"><div class="bar-fill" style="width:100%"></div></div></div>
+      </div>
+      <div class="footer">Download the data <span class="icon">⇓</span></div>
+    </div>
+  </div>
+</body>
+</html>
