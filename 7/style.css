@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  min-width: 120px;
+  text-align: right;
+}
+
+.image-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  background: #f0f0f0;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.center-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: left;
+} 
