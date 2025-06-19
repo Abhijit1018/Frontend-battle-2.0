@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); /* Example font */
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a2b40; /* Dark blue background */
+    color: #ffffff;
+    overflow: hidden; /* Hide overflow for animations */
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.top-bar {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.rating, .review {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.rating .fas.fa-star,
+.rating .fas.fa-star-half-alt {
+    color: #ffd700; /* Gold for stars */
+}
+
+.company-logo {
+    width: 20px; /* Adjust as needed */
+    height: 20px;
+    border-radius: 50%; /* If they are circular, like a placeholder */
+}
+
+.main-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative; /* For positioning dynamic cards */
+}
+
+.headline {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.highlight-text {
+    /* This will be targeted by JavaScript to change color */
+    color: inherit; /* Default */
+    transition: color 0.5s ease-in-out;
+}
+
+.ai-insights {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #ffd700; /* Yellowish for sparkle */
+}
+
+.sparkle {
+    animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+    from { opacity: 0.5; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.primary-btn {
+    background-color: #228b22; /* Green */
+    color: #ffffff;
+}
+
+.primary-btn:hover {
+    background-color: #1e7a1e;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.secondary-btn i {
+    margin-right: 8px;
+}
+
+.red-circle {
+    position: absolute;
+    bottom: -100px; /* Start off-screen */
+    right: -100px; /* Start off-screen */
+    width: 250px;
+    height: 250px;
+    background-color: #ff0000; /* Red */
+    border-radius: 50%;
+    filter: blur(80px); /* Soft glow effect */
+    opacity: 0.7;
+    z-index: -1; /* Behind other content */
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Dynamic content area and cards */
+.dynamic-content-area {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+    transform: translate(-50%, -50%); /* Center it initially */
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks on elements behind */
+}
+
+.content-card {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    position: absolute;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    opacity: 0; /* Hidden by default */
+    transform: scale(0.9); /* Slightly smaller by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: auto; /* Enable clicks on the card itself */
+}
+
+.content-card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Specific positioning for each card based on video layout */
+.expenses-card {
+    bottom: 50px;
+    left: 50px;
+    width: 250px;
+}
+.expenses-card canvas {
+    max-width: 100%;
+}
+.expenses-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.expenses-card ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.expenses-card .color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 8px;
+}
+.expenses-card .insurance { background-color: #4CAF50; }
+.expenses-card .wages { background-color: #FFC107; }
+.expenses-card .rent { background-color: #2196F3; }
+.expenses-card .legal { background-color: #F44336; }
+.expenses-card .other { background-color: #9C27B0; }
+
+
+.total-income-card {
+    top: 100px;
+    right: 50px;
+    width: 300px;
+}
+.total-income-card .growth {
+    color: #4CAF50; /* Green for growth */
+    font-weight: bold;
+}
+.total-income-card canvas {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.cash-card {
+    top: 200px;
+    right: 150px;
+    width: 200px;
+}
+.cash-card .growth {
+    color: #4CAF50;
+    font-weight: bold;
+}
+.cash-card .small-text {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.finance-score-card {
+    bottom: 80px;
+    right: 100px;
+    width: 200px;
+    text-align: center;
+    background-color: rgba(34, 139, 34, 0.5); /* Semi-transparent green */
+    border: 1px solid #228b22;
+}
+
+.report-preview-card {
+    top: 200px;
+    left: 80px;
+    width: 280px;
+}
+.report-preview-card h4 {
+    margin-top: 0;
+}
+.report-preview-card .logos-row {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.report-preview-card img {
+    max-width: 45%;
+    height: auto;
+}
+
+.comment-card {
+    top: 100px;
+    right: 50px; /* Adjust as per video */
+    width: 280px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+.comment-card .avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #2196F3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.comment-card .comment-details p {
+    margin: 0 0 5px 0;
+}
+.comment-card button {
+    background-color: #2196F3;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.comment-card button:hover {
+    background-color: #1976D2;
+}
+
+.send-to-card {
+    top: 150px;
+    right: 80px;
+    width: 200px;
+}
+.send-to-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.send-to-card ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.send-to-card ul li:hover {
+    color: #2196F3;
+}
+
+.today-card {
+    top: 50px;
+    right: 250px;
+    width: 180px;
+    text-align: center;
+}
+
+.invoices-card {
+    bottom: 50px;
+    left: 100px;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly darker for table */
+}
+.invoices-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.invoices-card th, .invoices-card td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+}
+.invoices-card th {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.cash-runway-card {
+    bottom: 10px;
+    left: 20px;
+    width: 150px;
+    text-align: center;
+}
+
+.overdue-card {
+    bottom: 50px;
+    left: 180px;
+    width: 150px;
+    text-align: center;
+    color: #F44336; /* Red for overdue */
+    border: 1px solid #F44336;
+}
+.overdue-card i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.integrations-card {
+    top: 150px;
+    right: 50px;
+    width: 400px;
+    text-align: center;
+}
+.integrations-card .integration-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.integrations-card .integration-logos img {
+    height: 30px; /* Adjust logo size */
+    width: auto;
+}
+.integrations-card .integration-logos span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.branch-card {
+    bottom: 100px;
+    right: 50px;
+    width: 250px;
+    text-align: center;
+}
+.branch-card .branch-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.branch-card button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.branch-card button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.us-states-card {
+    bottom: 10px;
+    right: 150px;
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.us-states-card button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.us-states-card button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
