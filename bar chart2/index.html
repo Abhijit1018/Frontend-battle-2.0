@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Embodied Carbon Emissions</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background: #fdf8f6;
+      color: #3c1f23;
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    header .highlight {
+      color: #6d3b3f;
+      display: inline-block;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .filter-group label {
+      background: #fff;
+      border: 2px solid #6d3b3f;
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #6d3b3f;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background: #6d3b3f;
+      color: #fff;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 400px;
+      margin-bottom: 1rem;
+    }
+
+    .key {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .line {
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .solid { background-color: #3c1f23; }
+    .dashed {
+      border-top: 2px dashed #7d5a5e;
+      width: 40px;
+      display: inline-block;
+    }
+
+    .download {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .download button {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      border: 2px solid #3c1f23;
+      background: none;
+      color: #3c1f23;
+      cursor: pointer;
+    }
+
+    .about {
+      font-size: 0.95rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .filters {
+        flex-direction: column;
+        align-items: center;
+      }
+      .chart-container {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>EMBODIED <span class="highlight">CARBON</span> <span class="highlight">EMISSIONS</span></h1>
+      <p>Intensity measured in kgCO<sub>2</sub>e/m<sup>2</sup></p>
+    </header>
+
+    <div class="filters">
+      <div class="filter-group">
+        <input type="radio" id="refurb" name="type" checked />
+        <label for="refurb">Refurbishment</label>
+
+        <input type="radio" id="newbuild" name="type" />
+        <label for="newbuild">New Build</label>
+
+        <input type="radio" id="all" name="type" />
+        <label for="all">All</label>
+      </div>
+      <div class="filter-group">
+        <input type="radio" id="complete" name="status" checked />
+        <label for="complete">Complete</label>
+
+        <input type="radio" id="estimate" name="status" />
+        <label for="estimate">Estimate</label>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="carbonChart"></canvas>
+    </div>
+
+    <div class="key">
+      <div><span class="dashed"></span> 500 kgCO₂e/m² – Target 2030</div>
+      <div><span class="line solid"></span> 600 kgCO₂e/m² – Target 2025</div>
+    </div>
+
+    <div class="download">
+      <button title="Download Data">⬇</button>
+    </div>
+
+    <div class="about">
+      <p>
+        This dashboard presents the embodied carbon emissions intensity of various construction projects.
+        Use the filters above to switch between project types and statuses. The chart shows actual project
+        values compared to 2025 and 2030 carbon targets, helping identify areas where improvements can be made.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('carbonChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Project A', 'Project B', 'Project C', 'Project D', 'Project E'],
+        datasets: [
+          {
+            label: 'Refurbishment',
+            data: [275, 139, 278, 420, 310],
+            backgroundColor: '#d6a6a6'
+          },
+          {
+            label: 'New Build',
+            data: [549, 875, 617, 460, 580],
+            backgroundColor: '#6d3b3f'
+          },
+          {
+            label: 'Target 2025 (600)',
+            type: 'line',
+            data: [600, 600, 600, 600, 600],
+            borderColor: '#3c1f23',
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 0
+          },
+          {
+            label: 'Target 2030 (500)',
+            type: 'line',
+            data: [500, 500, 500, 500, 500],
+            borderColor: '#7d5a5e',
+            borderDash: [5, 5],
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#3c1f23'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.dataset.label}: ${ctx.raw} kgCO₂e/m²`
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'kgCO₂e/m²'
+            },
+            ticks: {
+              color: '#3c1f23'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#3c1f23'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
